@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+#define MAX_DIGIT 30
+
+int main(){
+    int a, result, b;
+    //Введення числа
+    printf("Введіть кількість цифр=");
+    scanf("%d",&a);
+    //Перевірка коректності вводу
+    if(a <= 0 || a > MAX_DIGIT){
+        printf("ПОМИЛКА!");
+        exit(0);
+    }
+    //Підрахунок кількості чисел
+    for (int i = 0; i < a; i++) {
+        if (i > 0) {
+            b += 2; //
+        } else {
+            b += 1;
+        }
+    }
+    //Виведення результату
+    result = b;
+    printf("Кількість чисел становить %d цифр= %d\n", a, result);
+}
