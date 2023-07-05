@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+// Функція для знаходження найбільшого спільного дільника
+int findGCD(int a, int b) {
+    if (b == 0)
+        return a;
+    else
+        return findGCD(b, a % b);
+}
+
+// Функція для знаходження найменшого спільного кратного
+int findLCM(int arr[], int n) {
+    int lcm = arr[0];
+
+    for (int i = 1; i < n; i++) {
+        lcm = (lcm * arr[i]) / findGCD(lcm, arr[i]);
+    }
+    return lcm;
+}
+
+int main() {
+    int n;
+    printf("Введіть кількість чисел: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Введіть %d числа, розділені пробілом: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int lcm = findLCM(arr, n);
+    printf("Найменше спільне кратне: %d\n", lcm);
+
+    return 0;
+}
