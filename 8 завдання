@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int factorial(int n) {
+    //Для обчислення факторіалу
+    int result = 1;
+    int i;
+    for (i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+int main() {
+    char word[15];
+    printf("Введіть слово з 14 букв:");
+    scanf("%s", word);
+    int length = strlen(word);
+    int letterCount[26] = {0};
+
+    for (int i = 0; i < length; i++) {
+        // Обчислюємо кількість входжень букв
+        int index = word[i] - 'A';
+        letterCount[index]++;
+    }
+
+    int totalFactorial = factorial(length);     // Факторіал слова
+    for (int i = 0; i < 26; i++) {
+        //Добуток факторіалів
+        if (letterCount[i] > 1) {
+            totalFactorial /= factorial(letterCount[i]);
+        }
+    }
+    printf("Кількість анаграм:%d\n", totalFactorial);
+
+    return 0;
+}
