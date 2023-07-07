@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float x1, y1, r1, x2, y2, r2;
+    float distance, sumOfRadii, diffOfRadii;
+    int numOfIntersections;
+
+    printf("Введіть координати центру першого кола (x1, y1): ");
+    scanf("%f %f", &x1, &y1);
+
+    printf("Введіть радіус першого кола (r1): ");
+    scanf("%f", &r1);
+
+    printf("Введіть координати центру другого кола (x2, y2): ");
+    scanf("%f %f", &x2, &y2);
+
+    printf("Введіть радіус другого кола (r2): ");
+    scanf("%f", &r2);
+
+    distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    sumOfRadii = r1 + r2;
+    diffOfRadii = fabs(r1 - r2);
+
+    if (distance == 0 && r1 == r2) {
+        numOfIntersections = -1;  // Кола співпадають
+    } else if (distance < sumOfRadii && distance > diffOfRadii) {
+        numOfIntersections = 2;  // Два точки перетину
+    } else if (distance == sumOfRadii || distance == diffOfRadii) {
+        numOfIntersections = 1;  // Одна точка перетину (зовнішнє дотикування або внутрішнє дотикування)
+    } else {
+        numOfIntersections = 0;  // Немає точок перетину
+    }
+
+    printf("Кількість точок перетину: %d\n", numOfIntersections);
+
+    return 0;
+}
