@@ -1,1 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+
+int main() {
+    int x,y,a,da,result = 0;
+    printf("Enter x: ");//Введення значень
+    scanf("%d", &x);
+    printf("Enter y: ");//Введення значень
+    scanf("%d", &y);
+    da = x;
+    if (0 <= x && x <= y && y <= pow(2, 31)) // Початкова умова
+    {
+        if (x == y) {// Якщо х = у;
+        printf("0\n");
+    }
+        else {
+            while (da != (y - 1) && da != (y - 2) && da != y) { //Обрахунок кількості кроків
+                da = da + a;
+                a = 2;
+                result++;
+            }
+            if (da == (y - 1)) {// Умова для 1 кроку
+                result++;
+            }
+            if (da == (y - 2)) { // Умова для 2х кроків по 1
+            result += 2;
+        }
+        }
+    }
+    else{
+        printf("ПОМИЛКА!");
+        exit(0);
+    }
+
+    printf("Minimum number of steps: %d\n", result);
+    return 0;
+}
 
